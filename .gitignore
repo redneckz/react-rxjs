@@ -1,0 +1,8 @@
+node_modules/
+es/
+dist/
+coverage/
+/npm-debug.log
+.cache/*
+!.cache/.gitkeep
+yarn-error.log
