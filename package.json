@@ -1,6 +1,6 @@
 {
   "name": "@redneckz/react-rxjs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Alexander Alexandrov",
   "description": "React is going reactive with RxJS by means of this small utility",
   "keywords": [
