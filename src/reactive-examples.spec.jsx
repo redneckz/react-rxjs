@@ -2,8 +2,7 @@ import React from 'react';
 import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { mount } from 'enzyme';
 import { reactive } from './reactive';
-import { handle } from './handle';
-import { par } from './par';
+import { par, handle } from './operators';
 
 describe('reactive decorator examples', () => {
     const Foo = () => <div />;

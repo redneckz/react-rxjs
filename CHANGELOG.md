@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [unreleased]
+## [Unreleased]
+
+## [0.0.2] - 2018-07-23
+
+### Added
+
+-   _assign_ operator to merge all props in stream (for testing purposes)
+-   _prev_ operator to shift stream one step back (for business cases)
 
 ## 0.0.1 - 2018-07-20
 

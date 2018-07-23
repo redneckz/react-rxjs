@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BehaviorSubject, of, concat, combineLatest } from 'rxjs';
-import { filter, distinctUntilChanged, scan } from 'rxjs/operators';
+import { filter, distinctUntilChanged } from 'rxjs/operators';
+import { assign } from './operators';
 import { isObject, isSame } from './is';
 
 export function reactive(propsMapper) {
@@ -19,7 +20,7 @@ export function reactive(propsMapper) {
                 const props$ = this.propsSubject.pipe(distinctUntilChanged(isSame));
                 const deltaProps$ = propsMapper(props$).pipe(
                     filter(isObject),
-                    scan((acc, delta) => Object.assign(acc, delta), {}),
+                    assign(),
                 );
                 const newProps$ = combineLatest(
                     props$,

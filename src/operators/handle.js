@@ -1,6 +1,6 @@
 import { Subject, of, concat } from 'rxjs';
 import { filter, pluck, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { isFunction, isObject } from './is';
+import { isFunction, isObject } from '../is';
 
 export function handle(propName, ...handlerOperators) {
     return props$ =>

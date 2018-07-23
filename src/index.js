@@ -1,4 +1,3 @@
 export { reactive } from './reactive';
-export { handle } from './handle';
-export { par } from './par';
+export { par, handle, assign, prev } from './operators';
 export { isFunction, isObject, isNil, isSame } from './is';
