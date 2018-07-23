@@ -31,11 +31,7 @@ describe('assign operator', () => {
                 bufferCount(3),
             )
             .subscribe((values) => {
-                expect(values).toEqual([
-                    {},
-                    {},
-                    { foo: 123 },
-                ]);
+                expect(values).toEqual([{}, {}, { foo: 123 }]);
                 done();
             });
     });
