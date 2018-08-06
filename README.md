@@ -18,9 +18,10 @@ $ yarn add @redneckz/react-rxjs
 
 # Usage
 
-...
+All motivational and theoretical stuff can be studied here [OdessaJS Conference](https://www.youtube.com/watch?v=5PM5c0EUMyE&feature=youtu.be)
+(also [predecessor](https://github.com/redneckz/react-redux-rxjs) of this library was shown).
 
-# Examples
+# Live Examples
 
 1.  [Fetch and Display Data](https://jsfiddle.net/redneckz/6f4d7jLr/)
 2.  [Fetch Data On Props Change](https://jsfiddle.net/redneckz/cg0mbL6v/)
