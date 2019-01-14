@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
-import { BehaviorSubject, of, concat, combineLatest } from 'rxjs';
+// @flow
+import * as React from 'react';
+import { BehaviorSubject, of, concat, combineLatest, Subscription } from 'rxjs';
+import type { Observable } from 'rxjs';
 import { filter, distinctUntilChanged } from 'rxjs/operators';
 import { assign } from './operators';
 import { isObject, isSame } from './is';
 
-export function reactive(propsMapper) {
-    return WrappedComponent =>
-        class ReactiveWrapper extends Component {
+export function reactive<Config: {}>(
+    propsMapper: (arg: Observable<Config>) => Observable<$Shape<Config>>,
+): (React.AbstractComponent<Config>) => React.AbstractComponent<Config> {
+    return (WrappedComponent): React.AbstractComponent<Config> =>
+        class ReactiveWrapper extends React.Component<Config, Config> {
             static displayName = `Reactive(${WrappedComponent.displayName ||
-                WrappedComponent.name})`;
+                WrappedComponent.name ||
+                ''})`;
 
-            constructor(props) {
+            constructor(props: Config) {
                 super(props);
                 this.state = props;
             }
@@ -27,7 +32,7 @@ export function reactive(propsMapper) {
                     concat(of({}), deltaProps$),
                     (props, delta) => Object.assign({}, props, delta),
                 );
-                this.subscription = newProps$.subscribe((newProps) => {
+                this.subscription = newProps$.subscribe((newProps: Config) => {
                     this.setState(newProps);
                 });
             }
@@ -40,6 +45,9 @@ export function reactive(propsMapper) {
                 this.propsSubject.complete();
                 this.subscription.unsubscribe();
             }
+
+            subscription: Subscription;
+            propsSubject: BehaviorSubject<Config>;
 
             render() {
                 return <WrappedComponent {...this.state} />;
