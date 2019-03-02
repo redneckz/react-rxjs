@@ -1,7 +1,11 @@
 // @flow
-/* eslint-disable no-redeclare */
-import { Subject, of, concat, Observable } from 'rxjs';
-import { filter, pluck, distinctUntilChanged, switchMap } from 'rxjs/operators';
+/* eslint-disable no-redeclare, no-unused-vars */
+import {
+  Subject, of, concat, Observable,
+} from 'rxjs';
+import {
+  filter, pluck, distinctUntilChanged, switchMap,
+} from 'rxjs/operators';
 import { isFunction, isObject } from '../is';
 
 type ResultOperator<Props> = (
@@ -82,26 +86,25 @@ declare function handle<Props, I, O1, O2, O3, O4, O5, O6, O7, O8>(
 ): ResultOperator<Props>;
 
 export function handle(propName, ...handlerOperators) {
-    return props$ =>
-        props$.pipe(
-            pluck(propName),
-            distinctUntilChanged(),
-            switchMap((handler) => {
-                const eventsSubject = new Subject();
-                const wrappedHandler = (event) => {
-                    eventsSubject.next(event);
-                    if (isFunction(handler)) handler(event);
-                };
-                return concat(
-                    of({
-                        [propName]: wrappedHandler,
-                    }),
-                    eventsSubject.pipe(
-                        ...handlerOperators,
-                        filter(obj => !(obj instanceof Event)),
-                        filter(isObject),
-                    ),
-                );
-            }),
-        );
+  return props$ => props$.pipe(
+    pluck(propName),
+    distinctUntilChanged(),
+    switchMap((handler) => {
+      const eventsSubject = new Subject();
+      const wrappedHandler = (event) => {
+        eventsSubject.next(event);
+        if (isFunction(handler)) handler(event);
+      };
+      return concat(
+        of({
+          [propName]: wrappedHandler,
+        }),
+        eventsSubject.pipe(
+          ...handlerOperators,
+          filter(obj => !(obj instanceof Event)),
+          filter(isObject),
+        ),
+      );
+    }),
+  );
 }
