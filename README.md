@@ -5,6 +5,7 @@ React is going reactive with RxJS by means of this small utility
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
+[![Bundle size][bundlephobia-image]][bundlephobia-url]
 
 # Installation
 
@@ -37,3 +38,5 @@ All motivational and theoretical stuff can be studied here [OdessaJS Conference]
 [travis-url]: https://travis-ci.org/redneckz/react-rxjs
 [coveralls-image]: https://coveralls.io/repos/github/redneckz/react-rxjs/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/redneckz/react-rxjs?branch=master
+[bundlephobia-image]: https://badgen.net/bundlephobia/min/@redneckz/react-rxjs
+[bundlephobia-url]: https://bundlephobia.com/result?p=@redneckz/react-rxjs
