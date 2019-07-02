@@ -31,20 +31,20 @@
     "rxjs": "^6.4.0"
   },
   "devDependencies": {
-    "@redneckz/react-lib-config": "0.0.5",
-    "enzyme": "~3.8.0",
-    "flow-copy-source": "~2.0.3",
-    "rxjs": "~6.4.0"
+    "@redneckz/react-lib-config": "0.0.7",
+    "regenerator-runtime": "~0.13.2",
+    "enzyme": "~3.10.0",
+    "flow-bin": "~0.102.0",
+    "rxjs": "~6.5.2"
   },
   "scripts": {
     "prepublish": "npm run build",
     "prebuild": "npm run clean && npm run eslint && npm run jest",
     "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
-    "build:commonjs": "cross-env NODE_ENV=cjs react-lib-build && npm run build:flow -- lib || true",
-    "build:es": "cross-env NODE_ENV=es react-lib-build && npm run build:flow -- es || true",
+    "build:commonjs": "cross-env NODE_ENV=cjs react-lib-build",
+    "build:es": "cross-env NODE_ENV=es react-lib-build",
     "build:umd": "cross-env NODE_ENV=development react-lib-build",
     "build:umd:min": "cross-env NODE_ENV=production react-lib-build",
-    "build:flow": "flow-copy-source --ignore **/*.spec.* src",
     "clean": "rimraf lib es dist coverage",
     "pretest": "npm run eslint",
     "test": "npm run jest && npm run coveralls",

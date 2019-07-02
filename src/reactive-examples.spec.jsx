@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import React from 'react';
 import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { mount } from 'enzyme';

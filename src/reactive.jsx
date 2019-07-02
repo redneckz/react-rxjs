@@ -15,6 +15,10 @@ export function reactive<Config: {}>(
     class ReactiveWrapper extends React.Component<Config, Config> {
       static displayName = `Reactive(${WrappedComponent.displayName || WrappedComponent.name || ''})`;
 
+      subscription: Subscription;
+
+      propsSubject: BehaviorSubject<Config>;
+
       constructor(props: Config) {
         super(props);
         this.state = props;
@@ -45,10 +49,6 @@ export function reactive<Config: {}>(
         this.propsSubject.complete();
         this.subscription.unsubscribe();
       }
-
-      subscription: Subscription;
-
-      propsSubject: BehaviorSubject<Config>;
 
       render() {
         return <WrappedComponent {...this.state} />;
